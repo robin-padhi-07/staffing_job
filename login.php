@@ -4,16 +4,16 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: service.php");
+    header("location: index.php");
     exit;
 }
  
-// Include config file
-require_once "admin/common/config.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
+    // Include config file
+    require_once('database.php');
+    
+    // Define variables and initialize with empty values
+    $username = $password = "";
+    $username_err = $password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: job_search.php");
+                            header("location: profile.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
